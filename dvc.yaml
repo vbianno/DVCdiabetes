@@ -20,27 +20,3 @@ metrics:
 plots:
 - dvclive/plots/metrics:
     x: step
-- precision_avg vs step:
-      template: simple
-      x: precision_avg
-      y:
-          dvclive/plots/metrics/precision_avg.tsv: step
-- f1_avg vs step:
-      template: simple
-      x: f1_avg
-      y:
-          dvclive/plots/metrics/f1_avg.tsv: step
-- accuracy vs step:
-      template: simple
-      x: accuracy
-      y:
-          dvclive/plots/metrics/accuracy.tsv: step
-- recall_avg vs step:
-      template: simple
-      x: recall_avg
-      y:
-          dvclive/plots/metrics/recall_avg.tsv: step
-
-
-
-
