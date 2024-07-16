@@ -1,0 +1,46 @@
+stages:
+  prepared:
+    cmd: python3 scripts/prepare.py
+    deps:
+    - scripts/prepare.py
+    - data/raw/diabetes_prediction_dataset.csv
+    outs:
+    - data/prepared/training_set.csv
+    - data/prepared/test.csv
+  train:
+    cmd: python3 scripts/train.py
+    deps:
+    - scripts/train.py
+    - data/prepared/training_set.csv
+    - data/prepared/test.csv
+    outs:
+    - dvclive/
+metrics:
+- dvclive/metrics.json
+plots:
+- dvclive/plots/metrics:
+    x: step
+- precision_avg vs step:
+      template: simple
+      x: precision_avg
+      y:
+          dvclive/plots/metrics/precision_avg.tsv: step
+- f1_avg vs step:
+      template: simple
+      x: f1_avg
+      y:
+          dvclive/plots/metrics/f1_avg.tsv: step
+- accuracy vs step:
+      template: simple
+      x: accuracy
+      y:
+          dvclive/plots/metrics/accuracy.tsv: step
+- recall_avg vs step:
+      template: simple
+      x: recall_avg
+      y:
+          dvclive/plots/metrics/recall_avg.tsv: step
+
+
+
+

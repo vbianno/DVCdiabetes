@@ -1,0 +1,43 @@
+schema: '2.0'
+stages:
+  prepared:
+    cmd: python3 scripts/prepare.py
+    deps:
+    - path: data/raw/diabetes_prediction_dataset.csv
+      hash: md5
+      md5: cb243b99d81d96e9aeb08944ce9ac066
+      size: 3810356
+    - path: scripts/prepare.py
+      hash: md5
+      md5: 409c0402d8314b381af5eb7bdfb0dfe9
+      size: 917
+    outs:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 7bf80d6bd12ff6a1b46d10a02353b548
+      size: 9359
+    - path: data/prepared/training_set.csv
+      hash: md5
+      md5: d3dc52315b1795ae481f34fa32c77ce1
+      size: 3298242
+  train:
+    cmd: python3 scripts/train.py
+    deps:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 7bf80d6bd12ff6a1b46d10a02353b548
+      size: 9359
+    - path: data/prepared/training_set.csv
+      hash: md5
+      md5: d3dc52315b1795ae481f34fa32c77ce1
+      size: 3298242
+    - path: scripts/train.py
+      hash: md5
+      md5: 142a8fc8a97d25a948c3208dde1e3f21
+      size: 7624
+    outs:
+    - path: dvclive/
+      hash: md5
+      md5: 3809bc37f4c7124a853b73fe14bf741e.dir
+      size: 794
+      nfiles: 5
